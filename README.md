@@ -12,4 +12,8 @@ Hopefully in the future I could get a GUI implementation of this. That would be 
 wiki
 ====
 
-Coming later, once I document the source code.
+More coming later, once I document the source code.
+
+**Currency**
+
+You may notice that the currency used is notated as ¤. This symbol, ¤, is the currency sign, used to denote an unspecified currency. I chose to use it because using gold points (GP) is overrated.
