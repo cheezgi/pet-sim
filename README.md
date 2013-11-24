@@ -16,4 +16,4 @@ More coming later, once I document the source code.
 
 **Currency**
 
-You may notice that the currency used is notated as ¤. This symbol, ¤, is the currency sign, used to denote an unspecified currency. I chose to use it because using gold points (GP) is overrated.
+You may notice that the currency used is ¤. This symbol, ¤, is the currency sign, used to denote an unspecified currency. I chose to use it because using gold points (GP) is overused.
