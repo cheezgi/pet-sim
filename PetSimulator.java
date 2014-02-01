@@ -116,6 +116,8 @@ public class PetSimulator {
 				System.out.println("This feature is coming soon. For now, you");
 				System.out.println("can check the source code. Thanks! -cheezgi");
 				break;
+			default:
+				System.out.println("Unknown command. Please try \'help\' if you need help.");
 			}
 			
 			jobCounter++;
