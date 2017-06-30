@@ -1,6 +1,6 @@
 # pet-sim
 
-A small CLI pet simulator in Java and a continuation of the pet simulator that
+A small CLI pet simulator in Rust and a continuation of the pet simulator that
 was originally in Visual C++ and converted to C++.
 
 `pet-sim` was a project that I started as a part of a programming camp that I
