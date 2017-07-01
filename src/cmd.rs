@@ -29,7 +29,7 @@ pub fn parse_command(input: &str) -> Result<Command, ()> {
         "help" => Ok(Command::Help),
 
         "feed" => {
-            if words.len() > 2 {
+            if words.len() < 2 {
                 Err(())
             } else if words[1] == "a" {
                 Ok(Command::Feed(Amount::from(words[2])?))
@@ -39,7 +39,7 @@ pub fn parse_command(input: &str) -> Result<Command, ()> {
         },
 
         "play" => {
-            if words.len() > 2 {
+            if words.len() < 2 {
                 Err(())
             } else if words[1] == "a" {
                 Ok(Command::Play(Amount::from(words[2])?))
@@ -49,7 +49,7 @@ pub fn parse_command(input: &str) -> Result<Command, ()> {
         },
 
         "work" => {
-            if words.len() > 2 {
+            if words.len() < 2 {
                 Err(())
             } else if words[1] == "a" {
                 Ok(Command::Work(Amount::from(words[2])?))
