@@ -1,14 +1,14 @@
 
 #[derive(Debug, PartialEq, Clone)]
 pub struct Item {
-    pub size: u8,
+    pub edible: bool,
     pub name: String,
 }
 
 impl Item {
-    pub fn new(name: String, size: u8) -> Self {
+    pub fn new(name: String, edible: bool) -> Self {
         Item {
-            size: size,
+            edible: edible,
             name: name,
         }
     }
