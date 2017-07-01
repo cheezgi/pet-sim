@@ -58,11 +58,19 @@ pub fn parse_command(input: &str) -> Result<Command, ()> {
         },
 
         "give" => {
-            Err(())
+            if words.len() < 2 {
+                Err(())
+            } else {
+                Ok(Command::Give(words[1..].join(" ")))
+            }
         },
 
         "take" => {
-            Err(())
+            if words.len() < 2 {
+                Err(())
+            } else {
+                Ok(Command::Take(words[1..].join(" ")))
+            }
         }
 
         _ => Err(())
