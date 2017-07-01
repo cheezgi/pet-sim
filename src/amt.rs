@@ -23,6 +23,11 @@ impl<'a> Amount {
             _ => Err(())
         }
     }
+
+    pub fn scale(self, scale: u8) -> u8 {
+        let n: u8 = self.into();
+        n / scale
+    }
 }
 
 impl From<u8> for Amount {

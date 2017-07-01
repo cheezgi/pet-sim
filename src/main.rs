@@ -46,6 +46,16 @@ fn game_loop(mut pet: Pet) {
                               \tgive <item>: Give an item to {0}\n\
                               \ttake <item>: Take an item from {0}\n\
                               I wish you and {0} luck. Have fun!", pet.name());
+                },
+
+                Command::Feed(amt) => {
+                    println!("You feed {}. Yum!", pet.name());
+                    pet.feed(amt);
+                },
+
+                Command::Play(amt) => {
+                    println!("You play with {}. Whoo, haha!", pet.name());
+                    pet.play(amt);
                 }
 
                 _ => println!("unimplemented")
