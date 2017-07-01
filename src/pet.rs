@@ -1,4 +1,6 @@
 
+use item::Item;
+use amt::Amount;
 use clamp::Clamp;
 
 pub struct Pet {
@@ -10,7 +12,7 @@ pub struct Pet {
     cleanliness: u8,
     kind: String,
     name: String,
-    inventory: Vec<String>,
+    inventory: Vec<Item>,
 }
 
 impl Pet {
@@ -40,11 +42,11 @@ impl Pet {
         self.dead
     }
 
-    pub fn give(&mut self, item: String) {
+    pub fn give(&mut self, item: Item) {
         self.inventory.push(item);
     }
 
-    pub fn take(&mut self, item: String) {
+    pub fn take(&mut self, item: Item) {
         if self.inventory.contains(&item) {
             self.inventory.remove_item(&item);
         }

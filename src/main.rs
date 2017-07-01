@@ -25,11 +25,13 @@ fn game_loop(mut pet: Pet) {
 
         if let Ok(cmd) = pet_sim::parse_command(&pet_sim::get_input()) {
             match cmd {
+                Command::Empty => {}
                 Command::Quit => {
                     // TODO: save game state
                     println!("Bye!");
                     break
                 },
+                _ => println!("unimplemented")
             }
         } else {
             println!("I didn't understand that.");
