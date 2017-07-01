@@ -18,6 +18,18 @@ pub fn get_input() -> String {
     s.trim().to_owned()
 }
 
+
+pub fn parse_command(input: &str) -> Result<Command, ()> {
+    match input {
+        "quit" | "exit" => Ok(Command::Quit),
+        _ => Err(())
+    }
+}
+
+pub enum Command {
+    Quit,
+}
+
 trait Clamp {
     fn clamp(self, upper: Self, lower: Self) -> Self;
 }
