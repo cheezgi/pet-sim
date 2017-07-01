@@ -46,9 +46,9 @@ impl Pet {
         self.inventory.push(item);
     }
 
-    pub fn take(&mut self, item: Item) {
-        if self.inventory.contains(&item) {
-            self.inventory.remove_item(&item);
+    pub fn take(&mut self, item: &Item) {
+        if self.inventory.contains(item) {
+            self.inventory.remove_item(item);
         }
     }
 
