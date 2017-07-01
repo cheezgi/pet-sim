@@ -5,6 +5,8 @@ use item::Item;
 pub enum Command {
     Empty,
     Quit,
+    Stats,
+    Help,
     Feed(Amount),
     Play(Amount),
     Work(Amount),
@@ -21,6 +23,11 @@ pub fn parse_command(input: &str) -> Result<Command, ()> {
 
     match words[0] {
         "quit" => Ok(Command::Quit),
+
+        "stats" => Ok(Command::Stats),
+
+        "help" => Ok(Command::Help),
+
         "feed" => {
             if words.len() > 2 {
                 Err(())
@@ -30,6 +37,7 @@ pub fn parse_command(input: &str) -> Result<Command, ()> {
                 Ok(Command::Feed(Amount::from(words[1])?))
             }
         },
+
         "play" => {
             if words.len() > 2 {
                 Err(())
@@ -39,6 +47,7 @@ pub fn parse_command(input: &str) -> Result<Command, ()> {
                 Ok(Command::Play(Amount::from(words[1])?))
             }
         },
+
         "work" => {
             if words.len() > 2 {
                 Err(())
@@ -48,6 +57,7 @@ pub fn parse_command(input: &str) -> Result<Command, ()> {
                 Ok(Command::Work(Amount::from(words[1])?))
             }
         },
+
         _ => Err(())
     }
 }

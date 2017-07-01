@@ -3,6 +3,8 @@ use item::Item;
 use amt::Amount;
 use clamp::Clamp;
 
+use std::fmt;
+
 pub struct Pet {
     dead: bool,
     health: u8,
@@ -95,6 +97,15 @@ impl Pet {
     pub fn age(&mut self, amt: u8) {
         self.age += amt;
         self.age.clamp(0, 20);
+    }
+}
+
+impl fmt::Display for Pet {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "{} the {}:\n\thunger: {}\n\thealth: {}\n\
+                   \tcleanliness: {}\n\thappiness: {}\n\tage: {}\n\tinventory: {:?}",
+               self.name, self.kind, self.hunger, self.health, self.cleanliness,
+               self.happiness, self.age, self.inventory)
     }
 }
 
