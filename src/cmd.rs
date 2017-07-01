@@ -1,6 +1,5 @@
 
 use amt::Amount;
-use item::Item;
 
 pub enum Command {
     Empty,
@@ -10,8 +9,8 @@ pub enum Command {
     Feed(Amount),
     Play(Amount),
     Work(Amount),
-    Give(Item),
-    Take(Item),
+    Give(String),
+    Take(String),
 }
 
 pub fn parse_command(input: &str) -> Result<Command, ()> {
