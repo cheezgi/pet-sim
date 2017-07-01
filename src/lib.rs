@@ -2,7 +2,11 @@
 #![feature(vec_remove_item)]
 
 mod pet;
+mod clamp;
+mod cmd;
+
 pub use pet::*;
+pub use cmd::*;
 
 use std::io;
 use std::io::Write;
@@ -18,37 +22,9 @@ pub fn get_input() -> String {
     s.trim().to_owned()
 }
 
-
-pub fn parse_command(input: &str) -> Result<Command, ()> {
-    match input {
-        "quit" | "exit" => Ok(Command::Quit),
-        _ => Err(())
-    }
-}
-
-pub enum Command {
-    Quit,
-}
-
-trait Clamp {
-    fn clamp(self, upper: Self, lower: Self) -> Self;
-}
-
-impl<T> Clamp for T where T: std::cmp::Ord {
-    fn clamp(self, lower: T, upper: T) -> T {
-        if self > upper {
-            upper
-        } else if self < lower {
-            lower
-        } else {
-            self
-        }
-    }
-}
-
 #[cfg(test)]
 mod test {
-    use Clamp;
+    use ::clamp::Clamp;
 
     #[test]
     fn clamp_between_returns_self() {

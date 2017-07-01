@@ -1,5 +1,5 @@
 
-use Clamp;
+use clamp::Clamp;
 
 pub struct Pet {
     dead: bool,

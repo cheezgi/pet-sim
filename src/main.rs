@@ -14,18 +14,16 @@ fn main() {
     print!("What's its name? ");
     let name = pet_sim::get_input();
 
-    let mut pet = Pet::new(kind, name);
+    println!("Aww, {} the {}! How cute.", name, kind);
 
-    println!("Aww, {} the {}! How cute.", pet.name(), pet.kind());
-
-    game_loop(pet);
+    game_loop(Pet::new(kind, name));
 }
 
 fn game_loop(mut pet: Pet) {
     while !pet.is_dead() {
         print!("> ");
 
-        if let Ok(cmd) = pet_sim::parse_command(pet_sim::get_input()) {
+        if let Ok(cmd) = pet_sim::parse_command(&pet_sim::get_input()) {
             match cmd {
                 Command::Quit => {
                     // TODO: save game state
