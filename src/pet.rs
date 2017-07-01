@@ -1,6 +1,5 @@
 
 use item::Item;
-use amt::Amount;
 use clamp::Clamp;
 
 use std::fmt;
