@@ -58,6 +58,14 @@ pub fn parse_command(input: &str) -> Result<Command, ()> {
             }
         },
 
+        "give" => {
+            Err(())
+        },
+
+        "take" => {
+            Err(())
+        }
+
         _ => Err(())
     }
 }
