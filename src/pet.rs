@@ -16,6 +16,15 @@ pub struct Pet {
     kind: String,
     name: String,
     inventory: Vec<Item>,
+
+    feed_scale: u8,
+    hunger_scale: u8,
+    heal_scale: u8,
+    damage_scale: u8,
+    clean_scale: u8,
+    dirty_scale: u8,
+    play_scale: u8,
+    bore_scale: u8,
 }
 
 impl Pet {
@@ -31,6 +40,15 @@ impl Pet {
             kind: kind,
             name: name,
             inventory: vec![],
+
+            feed_scale: 5,
+            hunger_scale: 7,
+            heal_scale: 5,
+            damage_scale: 5,
+            clean_scale: 5,
+            dirty_scale: 5,
+            play_scale: 5,
+            bore_scale: 5,
         }
     }
 
@@ -95,46 +113,38 @@ impl Pet {
     }
 
     pub fn feed(&mut self, amt: Amount) {
-        let a = amt.scale(5);
-        self.hunger = (self.hunger as i16 + a as i16).clamp(0, 100) as u8;
+        self.hunger = (self.hunger as i16 + amt.scale(self.feed_scale) as i16).clamp(0, 100) as u8;
         self.heal(Amount::Little);
     }
 
     pub fn hunger(&mut self, amt: Amount) {
-        let a = amt.scale(7);
-        self.hunger = (self.hunger as i16 - a as i16).clamp(0, 100) as u8;
+        self.hunger = (self.hunger as i16 - amt.scale(self.hunger_scale) as i16).clamp(0, 100) as u8;
     }
 
     pub fn heal(&mut self, amt: Amount) {
-        let a = amt.scale(5);
-        self.health = (self.health as i16 + a as i16).clamp(0, 100) as u8;
+        self.health = (self.health as i16 + amt.scale(self.heal_scale) as i16).clamp(0, 100) as u8;
     }
 
     pub fn damage(&mut self, amt: Amount) {
-        let a = amt.scale(5);
-        self.health = (self.health as i16 - a as i16).clamp(0, 100) as u8;
+        self.health = (self.health as i16 - amt.scale(self.damage_scale) as i16).clamp(0, 100) as u8;
     }
 
     pub fn clean(&mut self, amt: Amount) {
-        let a = amt.scale(5);
-        self.cleanliness = (self.cleanliness as i16 + a as i16).clamp(0, 100) as u8;
+        self.cleanliness = (self.cleanliness as i16 + amt.scale(self.clean_scale) as i16).clamp(0, 100) as u8;
         self.heal(Amount::Little);
     }
 
     pub fn dirty(&mut self, amt: Amount) {
-        let a = amt.scale(5);
-        self.cleanliness = (self.cleanliness as i16 - a as i16).clamp(0, 100) as u8;
+        self.cleanliness = (self.cleanliness as i16 - amt.scale(self.dirty_scale) as i16).clamp(0, 100) as u8;
     }
 
     pub fn play(&mut self, amt: Amount) {
-        let a = amt.scale(5);
-        self.happiness = (self.happiness as i16 + a as i16).clamp(0, 100) as u8;
+        self.happiness = (self.happiness as i16 + amt.scale(self.play_scale) as i16).clamp(0, 100) as u8;
         self.heal(Amount::Little);
     }
 
     pub fn bore(&mut self, amt: Amount) {
-        let a = amt.scale(5);
-        self.happiness = (self.happiness as i16 - a as i16).clamp(0, 100) as u8;
+        self.happiness = (self.happiness as i16 - amt.scale(self.bore_scale) as i16).clamp(0, 100) as u8;
     }
 
     pub fn age(&mut self) {
