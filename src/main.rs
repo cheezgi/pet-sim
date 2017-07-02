@@ -82,6 +82,9 @@ fn game_loop(pet: &mut Pet) {
         } else {
             println!("I didn't understand that.");
         }
+
+        pet.update();
+        pet.age();
     }
 }
 
