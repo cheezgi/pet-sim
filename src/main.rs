@@ -54,6 +54,8 @@ fn game_loop(pet: &mut Pet) {
                               I wish you and {0} luck. Have fun!", pet.name());
                 },
 
+                Command::Xyzzy => println!("{} looks at you, confused.", pet.name()),
+
                 Command::Feed(amt) => {
                     println!("You feed {}. Yum!", pet.name());
                     pet.feed(amt);

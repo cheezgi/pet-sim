@@ -6,6 +6,7 @@ pub enum Command {
     Quit,
     Stats,
     Help,
+    Xyzzy,
     Feed(Amount),
     Play(Amount),
     Work(Amount),
@@ -27,6 +28,8 @@ pub fn parse_command(input: &str) -> Result<Command, ()> {
         "stats" => Ok(Command::Stats),
 
         "help" => Ok(Command::Help),
+
+        "xyzzy" => Ok(Command::Xyzzy),
 
         "feed" => {
             if words.len() < 2 {
