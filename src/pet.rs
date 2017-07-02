@@ -6,6 +6,7 @@ use std::fmt;
 
 pub struct Pet {
     dead: bool,
+    sick: bool,
     health: u8,
     happiness: u8,
     hunger: u8,
@@ -20,6 +21,7 @@ impl Pet {
     pub fn new(kind: String, name: String) -> Pet {
         Pet {
             dead: false,
+            sick: false,
             health: 100,
             happiness: 70,
             hunger: 70,
@@ -41,6 +43,18 @@ impl Pet {
 
     pub fn is_dead(&self) -> bool {
         self.dead
+    }
+
+    pub fn is_sick(&self) -> bool {
+        self.sick
+    }
+
+    pub fn sicken(&mut self) {
+        self.sick = true;
+    }
+
+    pub fn medicate(&mut self) {
+        self.sick = false;
     }
 
     pub fn give(&mut self, item: Item) {
