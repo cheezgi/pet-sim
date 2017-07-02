@@ -8,15 +8,21 @@ fn main() {
 
     // TODO: check for saved game
 
-    print!("What kind of pet do you have? ");
-    let kind = pet_sim::get_input();
-
-    print!("What's its name? ");
+    print!("What's your pet's name? ");
     let name = pet_sim::get_input();
+
+    print!("What kind of pet is it? ");
+    let kind = pet_sim::get_input();
 
     println!("Aww, {} the {}! How cute.", name, kind);
 
-    game_loop(Pet::new(kind, name));
+    let mut pet = Pet::new(kind, name);
+
+    game_loop(&mut pet);
+
+    if pet.is_dead() {
+        println!("{} has passed away. R.I.P.\n\nFinal statistics:\n\n{}", pet.name(), pet);
+    }
 }
 
 fn game_loop(mut pet: Pet) {
