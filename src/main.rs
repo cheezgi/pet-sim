@@ -66,7 +66,7 @@ fn game_loop(pet: &mut Pet) {
 
                 Command::Work(amt) => {
                     println!("You go to work. {} misses you.", pet.name());
-                    for _ in 1..amt.scale(9) {
+                    for _ in 1..amt.scale(11) {
                         // TODO: give player money
                         pet.update();
                     }
