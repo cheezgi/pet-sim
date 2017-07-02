@@ -71,8 +71,6 @@ impl Pet {
         }
         self.dirty(Amount::Little);
 
-        self.age();
-
         if self.age == 255 || self.health <= 10 {
             self.dead = true;
         }
