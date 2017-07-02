@@ -9,6 +9,7 @@ pub enum Command {
     Feed(Amount),
     Play(Amount),
     Work(Amount),
+    Bathe(Amount),
     Give(String),
     Take(String),
 }
@@ -56,6 +57,16 @@ pub fn parse_command(input: &str) -> Result<Command, ()> {
                 Ok(Command::Work(Amount::from(words[1])?))
             }
         },
+
+        "bathe" | "clean" => {
+            if words.len() < 2 {
+                Err(())
+            } else if words[1] == "a" {
+                Ok(Command::Bathe(Amount::from(words[2])?))
+            } else {
+                Ok(Command::Bathe(Amount::from(words[1])?))
+            }
+        }
 
         "give" => {
             if words.len() < 2 {
