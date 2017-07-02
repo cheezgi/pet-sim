@@ -25,7 +25,7 @@ fn main() {
     }
 }
 
-fn game_loop(mut pet: Pet) {
+fn game_loop(pet: &mut Pet) {
     while !pet.is_dead() {
         print!("> ");
 
@@ -62,6 +62,19 @@ fn game_loop(mut pet: Pet) {
                 Command::Play(amt) => {
                     println!("You play with {}. Whoo, haha!", pet.name());
                     pet.play(amt);
+                },
+
+                Command::Work(amt) => {
+                    println!("You go to work. {} misses you.", pet.name());
+                    for _ in 1..amt.scale(9) {
+                        // TODO: give player money
+                        pet.update();
+                    }
+                },
+
+                Command::Bathe(amt) => {
+                    println!("You give {} a bath. Scrub-a-dub dub!", pet.name());
+                    pet.clean(amt);
                 }
 
                 _ => println!("unimplemented")
