@@ -45,7 +45,7 @@ impl Pet {
             hunger_scale: 7,
             heal_scale: 5,
             damage_scale: 5,
-            clean_scale: 5,
+            clean_scale: 2,
             dirty_scale: 5,
             play_scale: 5,
             bore_scale: 5,
