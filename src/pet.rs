@@ -116,43 +116,51 @@ impl Pet {
     }
 
     pub fn feed(&mut self, amt: Amount) {
-        self.hunger = (self.hunger as i16 + amt.scale(self.feed_scale) as i16).clamp(0, 100) as u8;
+        self.hunger = add_scale(self.hunger, amt, self.feed_scale);
         self.heal(Amount::Little);
     }
 
     pub fn hunger(&mut self, amt: Amount) {
-        self.hunger = (self.hunger as i16 - amt.scale(self.hunger_scale) as i16).clamp(0, 100) as u8;
+        self.hunger = sub_scale(self.hunger, amt, self.hunger_scale);
     }
 
     pub fn heal(&mut self, amt: Amount) {
-        self.health = (self.health as i16 + amt.scale(self.heal_scale) as i16).clamp(0, 100) as u8;
+        self.health = add_scale(self.health, amt, self.heal_scale);
     }
 
     pub fn damage(&mut self, amt: Amount) {
-        self.health = (self.health as i16 - amt.scale(self.damage_scale) as i16).clamp(0, 100) as u8;
+        self.health = sub_scale(self.health, amt, self.damage_scale);
     }
 
     pub fn clean(&mut self, amt: Amount) {
-        self.cleanliness = (self.cleanliness as i16 + amt.scale(self.clean_scale) as i16).clamp(0, 100) as u8;
+        self.cleanliness = add_scale(self.cleanliness, amt, self.clean_scale);
         self.heal(Amount::Little);
     }
 
     pub fn dirty(&mut self, amt: Amount) {
-        self.cleanliness = (self.cleanliness as i16 - amt.scale(self.dirty_scale) as i16).clamp(0, 100) as u8;
+        self.cleanliness = sub_scale(self.cleanliness, amt, self.dirty_scale);
     }
 
     pub fn play(&mut self, amt: Amount) {
-        self.happiness = (self.happiness as i16 + amt.scale(self.play_scale) as i16).clamp(0, 100) as u8;
+        self.happiness = add_scale(self.happiness, amt, self.play_scale);
         self.heal(Amount::Little);
     }
 
     pub fn bore(&mut self, amt: Amount) {
-        self.happiness = (self.happiness as i16 - amt.scale(self.bore_scale) as i16).clamp(0, 100) as u8;
+        self.happiness = sub_scale(self.happiness, amt, self.bore_scale);
     }
 
     pub fn age(&mut self) {
         self.age = (self.age as i16 + 1i16).clamp(0, 255) as u8;
     }
+}
+
+fn add_scale(lhs: u8, rhs: Amount, scale: u8) -> u8 {
+    (lhs as i16 + rhs.scale(scale) as i16).clamp(0, 100) as u8
+}
+
+fn sub_scale(lhs: u8, rhs: Amount, scale: u8) -> u8 {
+    (lhs as i16 - rhs.scale(scale) as i16).clamp(0, 100) as u8
 }
 
 impl fmt::Display for Pet {
