@@ -55,11 +55,13 @@ fn game_loop(pet: &mut Pet) {
                 Command::Feed(amt) => {
                     println!("You feed {}. Yum!", pet.name());
                     pet.feed(amt);
+                    pet.update_and_age();
                 },
 
                 Command::Play(amt) => {
                     println!("You play with {}. Whoo, haha!", pet.name());
                     pet.play(amt);
+                    pet.update_and_age();
                 },
 
                 Command::Work(amt) => {
@@ -68,11 +70,13 @@ fn game_loop(pet: &mut Pet) {
                         // TODO: give player money
                         pet.update();
                     }
+                    pet.age();
                 },
 
                 Command::Bathe(amt) => {
                     println!("You give {} a bath. Scrub-a-dub dub!", pet.name());
                     pet.clean(amt);
+                    pet.update_and_age();
                 }
 
                 _ => println!("unimplemented")
@@ -80,9 +84,6 @@ fn game_loop(pet: &mut Pet) {
         } else {
             println!("I didn't understand that.");
         }
-
-        pet.update();
-        pet.age();
     }
 }
 

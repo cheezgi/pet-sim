@@ -76,6 +76,11 @@ impl Pet {
         }
     }
 
+    pub fn update_and_age(&mut self) {
+        self.update();
+        self.age();
+    }
+
     pub fn kind(&self) -> &str {
         &self.kind
     }
