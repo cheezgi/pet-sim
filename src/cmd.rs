@@ -23,7 +23,7 @@ pub fn parse_command(input: &str) -> Result<Command, ()> {
     }
 
     match words[0] {
-        "quit" => Ok(Command::Quit),
+        "quit" | "exit" | "bye" => Ok(Command::Quit),
 
         "stats" => Ok(Command::Stats),
 
