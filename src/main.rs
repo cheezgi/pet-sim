@@ -25,6 +25,7 @@ fn main() {
     }
 }
 
+// TODO: Player struct
 fn game_loop(pet: &mut Pet) {
     while !pet.is_dead() {
         print!("> ");
