@@ -31,7 +31,7 @@ fn game_loop(pet: &mut Pet) {
 
         if let Ok(cmd) = pet_sim::parse_command(&pet_sim::get_input()) {
             match cmd {
-                Command::Empty => {}
+                Command::Empty => {},
 
                 Command::Quit => {
                     // TODO: save game state
