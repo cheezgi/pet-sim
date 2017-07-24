@@ -9,7 +9,7 @@ create a final project, wether it be a game or a utility.
 
 Me being a human being unoriginal, I had overheard someone talking about their
 gerbil simulator, and since the only cool thing I could do so far is download
-stuff off the internet, I decided that that was a great idea and here I am, four
+stuff off the internet, I decided that that was a great idea and here I am, five
 years or so later, continuing this project.
 
 Hopefully in the future I could get a GUI implementation of this. That would be
