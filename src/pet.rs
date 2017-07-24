@@ -64,8 +64,8 @@ impl Pet {
 
         if self.is_sick() {
             self.hunger(Amount::Some);
-            self.damage(Amount::Bit);
             self.bore(Amount::Some);
+            self.damage(Amount::Bit);
         } else {
             self.hunger(Amount::Little);
             self.bore(Amount::Little);
@@ -75,6 +75,10 @@ impl Pet {
         if self.age == 255 || self.health <= 10 {
             self.dead = true;
         }
+    }
+
+    pub fn age(&mut self) {
+        self.age = (self.age as i16 + 1i16).clamp(0, 255) as u8;
     }
 
     pub fn update_and_age(&mut self) {
@@ -149,10 +153,6 @@ impl Pet {
 
     pub fn bore(&mut self, amt: Amount) {
         self.happiness = sub_scale(self.happiness, amt, self.bore_scale);
-    }
-
-    pub fn age(&mut self) {
-        self.age = (self.age as i16 + 1i16).clamp(0, 255) as u8;
     }
 }
 
