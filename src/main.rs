@@ -39,20 +39,16 @@ fn game_loop(pet: &mut Pet) {
                     break
                 },
 
-                Command::Stats => {
-                    println!("{}", pet);
-                },
+                Command::Stats => println!("{}", pet),
 
-                Command::Help => {
-                    println!("Welcome to Pet Simulator. In this game, you take care of your pet, {0}.\n\
+                Command::Help => println!("Welcome to Pet Simulator. In this game, you take care of your pet, {0}.\n\
                               Use the following commands to help you in your quest to be the best owner:\n\
                               \tfeed <amount>: Feed {0}.\n\
                               \tplay <amount>: Play with {0}\n\
                               \twork <amount>: Gain money.\n\
                               \tgive <item>: Give an item to {0}\n\
                               \ttake <item>: Take an item from {0}\n\
-                              I wish you and {0} luck. Have fun!", pet.name());
-                },
+                              I wish you and {0} luck. Have fun!", pet.name()),
 
                 Command::Xyzzy => println!("{} looks at you, confused. Nothing happens.", pet.name()),
 
