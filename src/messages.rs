@@ -20,7 +20,7 @@ impl Messages {
         }
     }
 
-    pub fn analyze(&mut self, pet: &mut Pet) {
+    pub fn analyze(&mut self, pet: &Pet) {
         if pet.is_sick() && !self.sick {
             self.sick = true;
             println!("Your pet is sick! Be sure to take extra care of {}.", pet.name());
@@ -47,7 +47,7 @@ impl Messages {
         }
     }
 
-    pub fn update(&mut self, pet: &mut Pet) {
+    pub fn update(&mut self, pet: &Pet) {
         if !pet.is_sick() {
             if self.sick {
                 println!("{} is no longer sick. Hooray!", pet.name());
