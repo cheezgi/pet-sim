@@ -6,9 +6,11 @@ mod clamp;
 mod cmd;
 mod amt;
 mod item;
+mod messages;
 
 pub use pet::*;
 pub use cmd::*;
+pub use messages::*;
 
 use std::io;
 use std::io::Write;

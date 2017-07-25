@@ -25,6 +25,17 @@ pub struct Pet {
     dirty_scale: u8,
     play_scale: u8,
     bore_scale: u8,
+
+    hunger_damage: u8,
+    hunger_sicken: u8,
+    cleanliness_sicken: u8,
+    health_kill: u8,
+    age_kill: u8,
+
+    health_message: u8,
+    hunger_message: u8,
+    bore_message: u8,
+    clean_message: u8,
 }
 
 impl Pet {
@@ -45,34 +56,48 @@ impl Pet {
             feed_scale: 5,
             hunger_scale: 7,
             heal_scale: 5,
-            damage_scale: 5,
+            damage_scale: 8,
             clean_scale: 2,
             dirty_scale: 5,
             play_scale: 4,
             bore_scale: 5,
+
+            hunger_damage: 50,
+            hunger_sicken: 35,
+            cleanliness_sicken: 25,
+            age_kill: 255,
+            health_kill: 1,
+
+            health_message: 30,
+            hunger_message: 55,
+            bore_message: 30,
+            clean_message: 40,
         }
     }
 
     pub fn update(&mut self) {
-        if self.hunger <= 40 {
+        if self.hunger <= self.hunger_damage {
             self.damage(Amount::Bit);
         }
 
-        if self.cleanliness <= 25 || self.hunger <= 35 {
+        if self.hunger <= self.hunger_sicken || self.cleanliness <= self.cleanliness_sicken {
             self.sicken();
+        } else {
+            self.medicate();
         }
 
         if self.is_sick() {
             self.hunger(Amount::Some);
             self.bore(Amount::Some);
-            self.damage(Amount::Bit);
+            self.damage(Amount::Little);
         } else {
             self.hunger(Amount::Little);
             self.bore(Amount::Little);
+            self.heal(Amount::Bit);
         }
         self.dirty(Amount::Little);
 
-        if self.age == 255 || self.health <= 10 {
+        if self.age == self.age_kill || self.health <= self.health_kill {
             self.dead = true;
         }
     }
@@ -100,6 +125,22 @@ impl Pet {
 
     pub fn is_sick(&self) -> bool {
         self.sick
+    }
+
+    pub fn is_unhealthy(&self) -> bool {
+        self.health <= self.health_message
+    }
+
+    pub fn is_unhappy(&self) -> bool {
+        self.happiness <= self.bore_message
+    }
+
+    pub fn is_hungry(&self) -> bool {
+        self.hunger <= self.hunger_message
+    }
+
+    pub fn is_dirty(&self) -> bool {
+        self.cleanliness <= self.clean_message
     }
 
     pub fn sicken(&mut self) {
@@ -166,9 +207,11 @@ fn sub_scale(lhs: u8, rhs: Amount, scale: u8) -> u8 {
 
 impl fmt::Display for Pet {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "{} the {}:\n\thunger: {}\n\thealth: {}\n\
+        write!(f, "{} the {}{}:\n\thunger: {}\n\thealth: {}\n\
                    \tcleanliness: {}\n\thappiness: {}\n\tage: {}\n\tinventory: {:?}",
-               self.name, self.kind, self.hunger, self.health, self.cleanliness,
+               self.name, self.kind,
+               if self.sick {" (SICK)"} else {""},
+               self.hunger, self.health, self.cleanliness,
                self.happiness, self.age, self.inventory)
     }
 }
