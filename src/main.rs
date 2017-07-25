@@ -1,7 +1,7 @@
 
 extern crate pet_sim;
 
-use pet_sim::{Pet, Command};
+use pet_sim::{Pet, Command, Messages};
 
 fn main() {
     println!("Welcome to Pet Simulator!");
@@ -27,6 +27,8 @@ fn main() {
 
 // TODO: Player struct
 fn game_loop(pet: &mut Pet) {
+    let mut messages = Messages::new();
+
     while !pet.is_dead() {
         print!("> ");
 
@@ -85,6 +87,9 @@ fn game_loop(pet: &mut Pet) {
         } else {
             println!("I didn't understand that.");
         }
+
+        messages.analyze(pet);
+        messages.update(pet);
     }
 }
 
