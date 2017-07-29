@@ -1,7 +1,6 @@
 
-extern crate rand;
-
-use self::rand::Rng;
+use rand;
+use rand::Rng;
 
 #[derive(Debug, PartialEq, PartialOrd, Clone, Copy)]
 pub enum Amount {

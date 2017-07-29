@@ -1,6 +1,8 @@
 
 #![feature(vec_remove_item)]
 
+extern crate rand;
+
 mod pet;
 mod clamp;
 mod cmd;
