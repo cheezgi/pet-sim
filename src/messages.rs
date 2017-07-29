@@ -1,6 +1,7 @@
 
 use pet::Pet;
 
+#[derive(Clone, Copy, Debug)]
 pub struct Messages {
     sick: bool,
     unhealthy: bool,

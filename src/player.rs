@@ -1,6 +1,8 @@
 
 use item::Item;
 
+use std::fmt;
+
 pub struct Player {
     money: i32,
     inventory: Vec<Item>,
@@ -26,6 +28,12 @@ impl Player {
 
     pub fn withdraw(&mut self, amt: i32) {
         self.money -= amt;
+    }
+}
+
+impl fmt::Display for Player {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "You:\n\tmoney: {}\n\tinventory: {:?}", self.money, self.inventory)
     }
 }
 

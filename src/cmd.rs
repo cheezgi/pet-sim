@@ -7,6 +7,8 @@ pub enum Command {
     Stats,
     Help,
     Xyzzy,
+    #[cfg(feature = "debug")]
+    Debug,
     Feed(Amount),
     Play(Amount),
     Work(Amount),
@@ -30,6 +32,9 @@ pub fn parse_command(input: &str) -> Result<Command, ()> {
         "help" => Ok(Command::Help),
 
         "xyzzy" => Ok(Command::Xyzzy),
+
+        #[cfg(feature = "debug")]
+        "debug" => Ok(Command::Debug),
 
         "feed" => {
             if words.len() < 2 {

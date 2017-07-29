@@ -71,6 +71,14 @@ fn game_loop(pet: &mut Pet, player: &mut Player) {
 
                 Command::Xyzzy => println!("{} looks at you, confused. Nothing happens.", pet.name()),
 
+                #[cfg(feature = "debug")]
+                Command::Debug => {
+                    println!("Debug");
+                    println!("pet: {}\n", pet);
+                    println!("player: {}\n", player);
+                    println!("messages: {:?}", messages);
+                }
+
                 Command::Feed(amt) => {
                     println!("You feed {}. Yum!", pet.name());
                     pet.feed(amt);
