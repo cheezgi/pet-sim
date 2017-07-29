@@ -14,11 +14,11 @@ pub use cmd::*;
 pub use messages::*;
 pub use player::*;
 
-use std::io;
-use std::io::Write;
-
 use amt::Amount;
 use clamp::Clamp;
+
+use std::io;
+use std::io::Write;
 
 pub fn get_input() -> String {
     io::stdout().flush().expect("Could not flush stdout");
