@@ -2,6 +2,10 @@
 #![feature(vec_remove_item)]
 
 extern crate rand;
+extern crate serde;
+extern crate serde_json;
+#[macro_use]
+extern crate serde_derive;
 
 mod pet;
 mod clamp;
@@ -10,11 +14,13 @@ mod amt;
 mod item;
 mod messages;
 mod player;
+mod save;
 
 pub use pet::*;
 pub use cmd::*;
 pub use messages::*;
 pub use player::*;
+pub use save::*;
 
 use amt::Amount;
 use clamp::Clamp;
