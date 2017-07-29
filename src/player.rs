@@ -28,12 +28,16 @@ impl Player {
         self.money
     }
 
-    pub fn deposit(&mut self, amt: Amount) {
-        self.money = self.money + amt.scale(self.deposit_scale) as i32;
+    pub fn deposit(&mut self, amt: Amount) -> i32 {
+        let r = amt.scale(self.deposit_scale) as i32;
+        self.money = self.money + r;
+        r
     }
 
-    pub fn withdraw(&mut self, amt: Amount) {
-        self.money = self.money - amt.scale(self.withdraw_scale) as i32;
+    pub fn withdraw(&mut self, amt: Amount) -> i32 {
+        let r = amt.scale(self.withdraw_scale) as i32;
+        self.money = self.money - r;
+        r
     }
 }
 
