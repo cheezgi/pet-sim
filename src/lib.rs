@@ -15,6 +15,9 @@ pub use messages::*;
 use std::io;
 use std::io::Write;
 
+use amt::Amount;
+use clamp::Clamp;
+
 pub fn get_input() -> String {
     io::stdout().flush().expect("Could not flush stdout");
 
@@ -24,6 +27,14 @@ pub fn get_input() -> String {
     handle.read_line(&mut s).expect("Could not read line");
 
     s.trim().to_owned()
+}
+
+pub fn add_scale(lhs: u8, rhs: Amount, scale: u8) -> u8 {
+    (lhs as i16 + rhs.scale(scale) as i16).clamp(0, 100) as u8
+}
+
+pub fn sub_scale(lhs: u8, rhs: Amount, scale: u8) -> u8 {
+    (lhs as i16 - rhs.scale(scale) as i16).clamp(0, 100) as u8
 }
 
 #[cfg(test)]

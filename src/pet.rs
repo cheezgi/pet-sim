@@ -2,6 +2,7 @@
 use item::Item;
 use clamp::Clamp;
 use amt::Amount;
+use ::{sub_scale, add_scale};
 
 use std::fmt;
 
@@ -195,14 +196,6 @@ impl Pet {
     pub fn bore(&mut self, amt: Amount) {
         self.happiness = sub_scale(self.happiness, amt, self.bore_scale);
     }
-}
-
-fn add_scale(lhs: u8, rhs: Amount, scale: u8) -> u8 {
-    (lhs as i16 + rhs.scale(scale) as i16).clamp(0, 100) as u8
-}
-
-fn sub_scale(lhs: u8, rhs: Amount, scale: u8) -> u8 {
-    (lhs as i16 - rhs.scale(scale) as i16).clamp(0, 100) as u8
 }
 
 impl fmt::Display for Pet {
