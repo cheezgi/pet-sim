@@ -1,12 +1,28 @@
 
 extern crate pet_sim;
 
-use pet_sim::{Pet, Command, Messages, Player};
+extern crate serde;
+extern crate serde_json;
+
+use pet_sim::{Pet, Command, Messages, Player, Settings};
+
+use std::fs::File;
+use std::io::Read;
+use std::path::Path;
 
 fn main() {
     println!("Welcome to Pet Simulator!");
 
     // TODO: check for saved game
+    let settings: Settings = serde_json::from_str(
+        &if let Ok(mut file) = File::open(Path::new("settings.json")) {
+            let mut s = String::new();
+            file.read_to_string(&mut s).expect("Could not read file");
+            s
+        } else {
+            panic!("Could not open file")
+        }
+    ).expect("Settings malformed");
 
     print!("What's your pet's name? ");
     let name = pet_sim::get_input();
@@ -16,7 +32,7 @@ fn main() {
 
     println!("Aww, {} the {}! How cute.", name, kind);
 
-    let mut pet = Pet::new(kind, name);
+    let mut pet = Pet::new(kind, name, settings);
     let mut player = Player::new();
 
     game_loop(&mut pet, &mut player);

@@ -1,0 +1,23 @@
+
+{
+    "feed_scale": 5,
+    "hunger_scale": 7,
+    "heal_scale": 5,
+    "damage_scale": 8,
+    "clean_scale": 2,
+    "dirty_scale": 5,
+    "play_scale": 4,
+    "bore_scale": 5,
+
+    "hunger_damage": 50,
+    "hunger_sicken": 35,
+    "cleanliness_sicken": 25,
+    "age_kill": 255,
+    "health_kill": 1,
+
+    "health_message": 30,
+    "hunger_message": 55,
+    "bore_message": 30,
+    "clean_message": 40
+}
+

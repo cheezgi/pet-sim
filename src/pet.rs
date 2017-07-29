@@ -2,6 +2,7 @@
 use item::Item;
 use clamp::Clamp;
 use amt::Amount;
+use save::Settings;
 use ::{sub_scale, add_scale};
 
 use std::fmt;
@@ -40,7 +41,7 @@ pub struct Pet {
 }
 
 impl Pet {
-    pub fn new(kind: String, name: String) -> Pet {
+    pub fn new(kind: String, name: String, settings: Settings) -> Pet {
         Pet {
             dead: false,
             sick: false,
@@ -54,25 +55,25 @@ impl Pet {
             inventory: vec![],
 
             // lower = bigger change, higher = smaller change
-            feed_scale: 5,
-            hunger_scale: 7,
-            heal_scale: 5,
-            damage_scale: 8,
-            clean_scale: 2,
-            dirty_scale: 5,
-            play_scale: 4,
-            bore_scale: 5,
+            feed_scale: settings.feed_scale,
+            hunger_scale: settings.hunger_scale,
+            heal_scale: settings.heal_scale,
+            damage_scale: settings.damage_scale,
+            clean_scale: settings.clean_scale,
+            dirty_scale: settings.dirty_scale,
+            play_scale: settings.play_scale,
+            bore_scale: settings.bore_scale,
 
-            hunger_damage: 50,
-            hunger_sicken: 35,
-            cleanliness_sicken: 25,
-            age_kill: 255,
-            health_kill: 1,
+            hunger_damage: settings.hunger_damage,
+            hunger_sicken: settings.hunger_sicken,
+            cleanliness_sicken: settings.cleanliness_sicken,
+            age_kill: settings.age_kill,
+            health_kill: settings.health_kill,
 
-            health_message: 30,
-            hunger_message: 55,
-            bore_message: 30,
-            clean_message: 40,
+            health_message: settings.health_message,
+            hunger_message: settings.hunger_message,
+            bore_message: settings.bore_message,
+            clean_message: settings.clean_message,
         }
     }
 
