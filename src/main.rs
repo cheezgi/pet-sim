@@ -17,8 +17,9 @@ fn main() {
     println!("Aww, {} the {}! How cute.", name, kind);
 
     let mut pet = Pet::new(kind, name);
+    let mut player = Player::new();
 
-    game_loop(&mut pet);
+    game_loop(&mut pet, &mut player);
 
     if pet.is_dead() {
         println!("{} has passed away. R.I.P.\n\nFinal statistics:\n\n{}", pet.name(), pet);
@@ -26,7 +27,7 @@ fn main() {
 }
 
 // TODO: Player struct
-fn game_loop(pet: &mut Pet) {
+fn game_loop(pet: &mut Pet, player: &mut Player) {
     let mut messages = Messages::new();
 
     while !pet.is_dead() {
