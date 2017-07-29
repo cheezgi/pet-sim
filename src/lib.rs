@@ -7,10 +7,12 @@ mod cmd;
 mod amt;
 mod item;
 mod messages;
+mod player;
 
 pub use pet::*;
 pub use cmd::*;
 pub use messages::*;
+pub use player::*;
 
 use std::io;
 use std::io::Write;

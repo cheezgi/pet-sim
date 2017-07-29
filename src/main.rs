@@ -1,7 +1,7 @@
 
 extern crate pet_sim;
 
-use pet_sim::{Pet, Command, Messages};
+use pet_sim::{Pet, Command, Messages, Player};
 
 fn main() {
     println!("Welcome to Pet Simulator!");
