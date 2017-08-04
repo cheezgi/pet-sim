@@ -27,6 +27,10 @@ use clamp::Clamp;
 
 use std::io;
 use std::io::Write;
+use std::fs::File;
+use std::io::Read;
+use std::path::Path;
+
 
 pub fn get_input() -> String {
     io::stdout().flush().expect("Could not flush stdout");
@@ -37,6 +41,18 @@ pub fn get_input() -> String {
     handle.read_line(&mut s).expect("Could not read line");
 
     s.trim().to_owned()
+}
+
+pub fn read_settings() -> Settings {
+    serde_json::from_str(
+        &if let Ok(mut file) = File::open(Path::new("settings.json")) {
+            let mut s = String::new();
+            file.read_to_string(&mut s).expect("Could not read file");
+            s
+        } else {
+            panic!("Could not open file")
+        }
+    ).expect("Settings malformed")
 }
 
 pub fn add_scale(lhs: u8, rhs: Amount, scale: u8) -> u8 {
