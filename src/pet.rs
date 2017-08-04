@@ -77,6 +77,39 @@ impl Pet {
         }
     }
 
+    pub fn update_settings(&mut self, settings: Settings) {
+        self.feed_scale = settings.feed_scale;
+        self.hunger_scale = settings.hunger_scale;
+        self.heal_scale = settings.heal_scale;
+        self.damage_scale = settings.damage_scale;
+        self.clean_scale = settings.clean_scale;
+        self.dirty_scale = settings.dirty_scale;
+        self.play_scale = settings.play_scale;
+        self.bore_scale = settings.bore_scale;
+
+        self.hunger_damage = settings.hunger_damage;
+        self.hunger_sicken = settings.hunger_sicken;
+        self.cleanliness_sicken = settings.cleanliness_sicken;
+        self.age_kill = settings.age_kill;
+        self.health_kill = settings.health_kill;
+
+        self.health_message = settings.health_message;
+        self.hunger_message = settings.hunger_message;
+        self.bore_message = settings.bore_message;
+        self.clean_message = settings.clean_message;
+    }
+
+    pub fn reset(&mut self, settings: Settings) {
+        self.dead = false;
+        self.sick = false;
+        self.health = settings.health;
+        self.happiness = settings.happiness;
+        self.hunger = settings.hunger;
+        self.age = settings.age;
+        self.cleanliness = settings.cleanliness;
+        self.inventory = vec![];
+    }
+
     pub fn update(&mut self) {
         if self.hunger <= self.hunger_damage {
             self.damage(Amount::Bit);
