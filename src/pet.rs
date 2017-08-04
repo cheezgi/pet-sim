@@ -201,11 +201,11 @@ impl Pet {
 
 impl fmt::Display for Pet {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "{} the {}{}:\n\thunger: {}\n\thealth: {}\n\
+        write!(f, "{} the {}{}:\n\thealth: {}\n\thunger: {}\n\
                    \tcleanliness: {}\n\thappiness: {}\n\tage: {}\n\tinventory: {:?}",
                self.name, self.kind,
                if self.sick {" (SICK)"} else {""},
-               self.hunger, self.health, self.cleanliness,
+               self.health, self.hunger, self.cleanliness,
                self.happiness, self.age, self.inventory)
     }
 }
