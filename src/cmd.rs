@@ -9,6 +9,10 @@ pub enum Command {
     Xyzzy,
     #[cfg(feature = "debug")]
     Debug,
+    #[cfg(feature = "debug")]
+    Reload,
+    #[cfg(feature = "debug")]
+    Reset,
     Feed(Amount),
     Play(Amount),
     Work(Amount),
@@ -35,6 +39,12 @@ pub fn parse_command(input: &str) -> Result<Command, ()> {
 
         #[cfg(feature = "debug")]
         "debug" => Ok(Command::Debug),
+
+        #[cfg(feature = "debug")]
+        "reload" => Ok(Command::Reload),
+
+        #[cfg(feature = "debug")]
+        "reset" => Ok(Command::Reset),
 
         "feed" => {
             if words.len() < 2 {

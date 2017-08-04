@@ -65,7 +65,17 @@ fn game_loop(pet: &mut Pet, player: &mut Player) {
                     println!("pet: {}\n", pet);
                     println!("player: {}\n", player);
                     println!("messages: {:?}", messages);
-                }
+                },
+
+                #[cfg(feature = "debug")]
+                Command::Reload => {
+                    pet.update_settings(read_settings());
+                },
+
+                #[cfg(feature = "debug")]
+                Command::Reset => {
+                    pet.reset(read_settings());
+                },
 
                 Command::Feed(amt) => {
                     println!("You feed {}. Yum!", pet.name());
