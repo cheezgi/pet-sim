@@ -1,6 +1,12 @@
 
 #[derive(Serialize, Deserialize, Clone, Copy)]
 pub struct Settings {
+    pub health: u8,
+    pub happiness: u8,
+    pub hunger: u8,
+    pub age: u8,
+    pub cleanliness: u8,
+
     pub feed_scale: u8,
     pub hunger_scale: u8,
     pub heal_scale: u8,

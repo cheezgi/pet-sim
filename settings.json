@@ -1,5 +1,11 @@
 
 {
+    "health": 100,
+    "happiness": 70,
+    "hunger": 70,
+    "age": 1,
+    "cleanliness": 70,
+
     "feed_scale": 5,
     "hunger_scale": 7,
     "heal_scale": 5,
