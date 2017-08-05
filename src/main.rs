@@ -48,14 +48,24 @@ fn game_loop(pet: &mut Pet, player: &mut Player) {
 
                 Command::Stats => println!("{}", pet),
 
-                Command::Help => println!("Welcome to Pet Simulator. In this game, you take care of your pet, {0}.\n\
+                Command::Help => {
+                    println!("Welcome to Pet Simulator. In this game, you take care of your pet, {0}.\n\
                               Use the following commands to help you in your quest to be the best owner:\n\
                               \tfeed <amount>: Feed {0}.\n\
                               \tplay <amount>: Play with {0}\n\
                               \twork <amount>: Gain money.\n\
-                              \tgive <item>: Give an item to {0}\n\
-                              \ttake <item>: Take an item from {0}\n\
-                              I wish you and {0} luck. Have fun!", pet.name()),
+                              \tgive <item>: Give an item to {0}.\n\
+                              \ttake <item>: Take an item from {0}.\n\
+                              \tstats: Show pet statistics.\n\
+                              \tbye/quit/exit: Exit pet-sim, (later) saving progress.\n\
+                              I wish you and {0} luck. Have fun!", pet.name());
+
+                    #[cfg(feature = "debug")]
+                    println!("You are running a debug build of pet-sim. This build contains a few extra commands:\n\
+                              \tdebug: Print debug information.\n\
+                              \treload: Reload settings from settings file.\n\
+                              \treset: Reset pet statistics to settings file.");
+                },
 
                 Command::Xyzzy => println!("{} looks at you, confused. Nothing happens.", pet.name()),
 
