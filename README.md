@@ -21,5 +21,5 @@ In order to build with these features, run the following command:
 cargo build --features debug
 ```
 
-This enables several debugging commands. More information is in the help.
+This enables several debugging commands. More information is in the help screen.
 
